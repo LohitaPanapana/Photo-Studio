@@ -1,0 +1,13 @@
+.photo-studio{
+    padding-top: 2rem;
+}
+
+.container{
+    width: 80%;
+    padding: 3rem;
+}
+
+.ui.huge.header{
+    font-size: 4rem;
+    color: #2A2B2A;
+}
