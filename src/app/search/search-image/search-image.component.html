@@ -1,3 +1,14 @@
-<div class="ui input">
-    <input type="text" placeholder="Search Term" />
+<form (submit)="onSubmit($event)">
+    <div class="ui input">
+        <input type="text" (input)="onSearch($event.target.value)" placeholder="Search Term" />
+    </div>
+</form>
+<div class="image-renderer" *ngIf="imageList.length">
+    <ul>
+        <li class="image" *ngFor="let image of imageList">
+            <a (click)="navigate(image)">
+                <img [src]="image.urls.regular" [alt]="image.alt_description">
+            </a>
+        </li>
+    </ul>
 </div>
