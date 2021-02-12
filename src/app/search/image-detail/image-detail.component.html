@@ -1,12 +1,12 @@
 <div *ngIf="imageDetails$ | async as imageDetail" class="detail">
     <div class="ui card">
         <div class="image">
-            <img [src]="imageDetail?.urls?.raw" [alt]="imageDetails?.alt_description" />
+            <img [src]="imageDetail?.urls?.raw" [alt]="imageDetail?.alt_description" />
         </div>
         <div class="content">
             <div class="description">
-                {{ imageDetails?.alt_description }}    
-                <a class="ui positive button" [href]="imageDetail?.urls?.full" [download]="alt_description">Download</a>
+                <p>{{ (imageDetail?.description ? imageDetail?.description : imageDetail?.alt_description) | sentence }}</p>
+                <a class="ui positive button" [href]="'https://unsplash.com/photos/' + imageDetail?.id + '/download?force=true'" download target="_blank">Download</a>
             </div>
         </div>
         <div class="extra content">
