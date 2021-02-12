@@ -1,0 +1,34 @@
+<div *ngIf="imageDetails$ | async as imageDetail" class="detail">
+    <div class="ui card">
+        <div class="image">
+            <img [src]="imageDetail?.urls?.raw" [alt]="imageDetails?.alt_description" />
+        </div>
+        <div class="content">
+            <div class="description">
+                {{ imageDetails?.alt_description }}    
+                <a class="ui positive button" [href]="imageDetail?.urls?.full" [download]="alt_description">Download</a>
+            </div>
+        </div>
+        <div class="extra content">
+            <i class="heart icon"></i>
+            {{ imageDetail?.likes || 0}}
+        </div>
+    </div>
+
+    <div class="ui comments">
+        <div class="comment">
+          <a class="avatar">
+            <img [src]="imageDetail?.user?.profile_image?.small">
+          </a>
+          <div class="content">
+            <a class="author">{{ imageDetail?.user?.name }}</a>
+            <div class="metadata">
+              <div class="date">{{ imageDetail?.user?.location }}</div>
+            </div>
+            <div class="text">
+                {{ imageDetail?.user?.bio }}
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
