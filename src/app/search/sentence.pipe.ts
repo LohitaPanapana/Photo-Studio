@@ -9,7 +9,7 @@ export class SentencePipe implements PipeTransform {
     if(!value){
       return 'No Description'
     }
-    return value[0].toUpperCase() + value.substring(1);
+    return value[0].toUpperCase() + value.substring(1).toLowerCase();
   }
 
 }
