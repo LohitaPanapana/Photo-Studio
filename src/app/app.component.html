@@ -1,6 +1,14 @@
 <div class="photo-studio">
+  <div class="ui inverted segment">
+    <div class="ui inverted secondary menu">
+      <a routerLink="/" class="header item"><i class="camera icon"></i> PHOTO STUDIO</a>
+      <div class="right menu">
+        <a class="item" routerLink="/search" routerLinkActive="active">Search</a>
+        <a class="item" routerLink="/random" routerLinkActive="active">Random</a>
+      </div>
+    </div>
+  </div>
   <div class="ui container is-centered">
-    <h1 class="ui huge center aligned header">Photo Studio</h1>
     <router-outlet></router-outlet>
   </div>
 </div>

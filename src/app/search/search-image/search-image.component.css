@@ -1,6 +1,10 @@
-.input{
+.ui.input{
     width: 100%;
     font-size: 2rem;
+}
+
+.ui.input > input{
+    text-align: center;
 }
 
 ul{
