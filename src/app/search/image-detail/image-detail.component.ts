@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/Operators';
-import { ImageDetails, PhotoService } from 'src/app/photo.service';
+import { PhotoService } from 'src/app/service/photo.service';
 
 @Component({
   selector: 'app-image-detail',

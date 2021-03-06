@@ -3,6 +3,9 @@
         <input type="text" (input)="onSearch($event.target.value)" placeholder="Search Term" />
     </div>
 </form>
+<div *ngIf="(loader$ | async)" class="ui active dimmer">
+    <div class="ui loader"></div>
+</div>
 <div class="image-renderer" *ngIf="imageList.length">
     <ul>
         <li class="image" *ngFor="let image of imageList">

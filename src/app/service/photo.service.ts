@@ -1,4 +1,4 @@
-import { clientID } from './credential';
+import { clientID } from '../credential';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { pluck } from 'rxjs/operators';
@@ -49,6 +49,10 @@ export class PhotoService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * @param term 
+   * This method responsible to fetch image based on term provided
+   */
   searchImage(term: string){
     this.loader.next(true);
     return this.http.get<SearchImageResponse>(this.baseUrl + 'search/photos', {
@@ -61,6 +65,9 @@ export class PhotoService {
     )
   }
 
+  /**
+   * This methos is responsible to fetch random image
+   */
   fetchRandomImage(){
     this.loader.next(true);
     return this.http.get<ImageDetails>(this.baseUrl + '/photos/random', {

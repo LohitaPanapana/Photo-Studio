@@ -1,8 +1,7 @@
-import { ParsedHostBindings } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { ImageDetails, PhotoService } from '../../photo.service';
+import { ImageDetails, PhotoService } from '../../service/photo.service';
 
 @Component({
   selector: 'app-search-image',

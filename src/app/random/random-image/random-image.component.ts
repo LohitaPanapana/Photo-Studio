@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ImageDetails, PhotoService } from 'src/app/photo.service';
+import { ImageDetails, PhotoService } from 'src/app/service/photo.service';
 
 @Component({
   selector: 'app-random-image',
