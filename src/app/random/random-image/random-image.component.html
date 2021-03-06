@@ -1,1 +1,10 @@
-<p>random-image works!</p>
+<div class="ui container">
+    <button class="ui primary button" (click)="generateRandomImage()">Random Image</button>
+    <a class="ui positive button" [href]="'https://unsplash.com/photos/' + randomImage?.id + '/download?force=true'" download target="_blank">Download</a>
+    <div class="ui segment">
+        <div *ngIf="(loader$ | async)" class="ui active dimmer">
+            <div class="ui loader"></div>
+        </div>
+        <img *ngIf="!(loader$ | async)" class="ui fluid image" [src]="randomImage?.urls?.raw" [alt]="randomImage?.alt_description">
+    </div>
+</div>

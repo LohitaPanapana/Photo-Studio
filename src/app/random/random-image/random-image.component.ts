@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ImageDetails, PhotoService } from 'src/app/photo.service';
 
 @Component({
   selector: 'app-random-image',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./random-image.component.css']
 })
 export class RandomImageComponent implements OnInit {
-
-  constructor() { }
+  randomImage: ImageDetails;
+  loader$: BehaviorSubject<boolean> = this.photoService.loader;
+  
+  constructor(private photoService: PhotoService) { }
 
   ngOnInit(): void {
+    this.photoService.fetchRandomImage().subscribe(fetchedImage => {
+      this.randomImage = fetchedImage;
+      this.photoService.loader.next(false);
+    });
   }
 
+  generateRandomImage(){
+    this.photoService.fetchRandomImage().subscribe(fetchedImage => {
+      this.randomImage = fetchedImage;
+      this.photoService.loader.next(false);
+    })
+  }
 }

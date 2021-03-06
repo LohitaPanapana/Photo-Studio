@@ -1,6 +1,7 @@
 import { ParsedHostBindings } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { ImageDetails, PhotoService } from '../../photo.service';
 
 @Component({
@@ -8,14 +9,13 @@ import { ImageDetails, PhotoService } from '../../photo.service';
   templateUrl: './search-image.component.html',
   styleUrls: ['./search-image.component.css']
 })
-export class SearchImageComponent implements OnInit {
+export class SearchImageComponent {
   term: string;
   imageList: ImageDetails[] = [];
+  loader$: BehaviorSubject<boolean> = this.photoService.loader;
+  
   constructor(private photoService: PhotoService,
-    private route: Router) { }
-
-  ngOnInit(): void {
-  }
+              private route: Router) { }
 
   onSearch(val: string){
     this.term = val;
@@ -25,6 +25,7 @@ export class SearchImageComponent implements OnInit {
     event.preventDefault();
     this.photoService.searchImage(this.term).subscribe(images => {
       this.imageList = images;
+      this.photoService.loader.next(false);
     })
   }
 

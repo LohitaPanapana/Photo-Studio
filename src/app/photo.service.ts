@@ -1,3 +1,4 @@
+import { clientID } from './credential';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { pluck } from 'rxjs/operators';
@@ -18,7 +19,8 @@ export interface ImageDetails{
     downloads: string
   },
   urls?: {
-    regular: string
+    regular: string,
+    small: string
   },
   user?: {
     bio: string, 
@@ -40,13 +42,15 @@ export interface ImageDetails{
 export class PhotoService {
   baseUrl = 'https://api.unsplash.com/';
   selectedImage = new BehaviorSubject<ImageDetails>({});
+  loader = new BehaviorSubject<boolean>(false);
   headers = {
-    Authorization: 'Client-ID dAjUfYvDJW7oDWsq41VCIUdmh2a7ucoy97Qe1alAIgw'
+    Authorization: clientID
   };
 
   constructor(private http: HttpClient) { }
 
   searchImage(term: string){
+    this.loader.next(true);
     return this.http.get<SearchImageResponse>(this.baseUrl + 'search/photos', {
       params: {
         query: term
@@ -58,6 +62,7 @@ export class PhotoService {
   }
 
   fetchRandomImage(){
+    this.loader.next(true);
     return this.http.get<ImageDetails>(this.baseUrl + '/photos/random', {
       headers: this.headers
     });

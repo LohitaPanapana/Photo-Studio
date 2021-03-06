@@ -16,7 +16,6 @@ export class ImageDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageDetails$ = this.photoService.selectedImage;
-    console.log(this.imageDetails$.getValue())
   }
 
 }
